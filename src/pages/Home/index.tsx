@@ -1,10 +1,10 @@
 import {
-  Coffee, Package, ShoppingCart, Timer,
+  Coffee, Minus, Package, Plus, ShoppingCart, Timer,
 } from 'phosphor-react';
 
+import { coffees } from '../../utils/coffees';
 import {
-  CoffeList,
-  Hero, HomeContainer, Items, ItemsContainer,
+  CoffeeList, Hero, Items, ItemsContainer, CoffeeCard, Label, AddToCart, Price, HomeContainer,
 } from './styles';
 
 import HeroImage from '../../assets/hero-image.svg';
@@ -13,7 +13,7 @@ export function Home() {
   return (
     <HomeContainer>
       <Hero>
-        <div>
+        <div className="text-content">
           <strong>Encontre o café perfeito para qualquer hora do dia</strong>
           <p>Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora</p>
 
@@ -47,10 +47,46 @@ export function Home() {
         <img src={HeroImage} alt="" />
       </Hero>
 
-      <CoffeList>
+      <section>
         <h2>Nossos cafés</h2>
 
-      </CoffeList>
+        <CoffeeList>
+          {coffees.map((coffee) => (
+            <CoffeeCard>
+              <img src={coffee.img} alt={coffee.title} />
+              <Label>
+                {coffee.label.map((label) => (
+                  <span>{label}</span>
+                ))}
+              </Label>
+              <strong>{coffee.title}</strong>
+              <p>{coffee.description}</p>
+
+              <footer>
+                <Price>
+                  <span>R$</span>
+                  <strong>{coffee.value}</strong>
+                </Price>
+
+                <AddToCart>
+                  <div>
+                    <button type="button">
+                      <Minus />
+                    </button>
+                    <span>1</span>
+                    <button type="button">
+                      <Plus />
+                    </button>
+                  </div>
+                  <button type="button">
+                    <ShoppingCart size={22} weight="fill" />
+                  </button>
+                </AddToCart>
+              </footer>
+            </CoffeeCard>
+          ))}
+        </CoffeeList>
+      </section>
     </HomeContainer>
   );
 }
