@@ -41,4 +41,21 @@ export const Cart = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 6px;
+  position: relative;
+
+  & > span {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.25rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    top: -0.5rem;
+    right: -0.5rem;
+    background-color: ${({ theme }) => theme['yellow-700']};
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: ${({ theme }) => theme.white};
+  }
 `;
