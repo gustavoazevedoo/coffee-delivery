@@ -4,7 +4,7 @@ import {
 
 import { coffees } from '../../utils/coffees';
 import {
-  CoffeeList, Hero, Items, ItemsContainer, CoffeeCard, Label, AddToCart, Price, HomeContainer,
+  CoffeeList, Hero, Item, ItemsContainer, CoffeeCard, Label, AddToCart, Price, HomeContainer,
 } from './styles';
 
 import HeroImage from '../../assets/hero-image.svg';
@@ -18,30 +18,30 @@ export function Home() {
           <p>Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora</p>
 
           <ItemsContainer>
-            <Items variant="orange">
+            <Item variant="orange">
               <div>
                 <ShoppingCart size={16} weight="fill" />
               </div>
               <span>Compra simples e segura</span>
-            </Items>
-            <Items variant="gray">
+            </Item>
+            <Item variant="gray">
               <div>
                 <Package size={16} weight="fill" />
               </div>
               <span>Embalagem mantém o café intacto</span>
-            </Items>
-            <Items variant="yellow">
+            </Item>
+            <Item variant="yellow">
               <div>
                 <Timer size={16} weight="fill" />
               </div>
               <span>Entrega rápida e rastreada</span>
-            </Items>
-            <Items variant="purple">
+            </Item>
+            <Item variant="purple">
               <div>
                 <Coffee size={16} weight="fill" />
               </div>
               <span>O café chega fresquinho até você</span>
-            </Items>
+            </Item>
           </ItemsContainer>
         </div>
         <img src={HeroImage} alt="" />

@@ -63,7 +63,7 @@ const colorVariants: any = {
   `,
 };
 
-export const Items = styled.div<ItemsProps>`
+export const Item = styled.div<ItemsProps>`
   display: flex;
   align-items: center;
   justify-content: center;
