@@ -1,5 +1,5 @@
 import {
-  Coffee, Minus, Package, Plus, ShoppingCart, Timer,
+  Coffee, Package, ShoppingCart, Timer,
 } from 'phosphor-react';
 
 import { coffees } from '../../utils/coffees';
@@ -8,6 +8,7 @@ import {
 } from './styles';
 
 import HeroImage from '../../assets/hero-image.svg';
+import { QuantityCoffees } from '../../components/QuantityCoffees';
 
 export function Home() {
   return (
@@ -69,15 +70,7 @@ export function Home() {
                 </Price>
 
                 <AddToCart>
-                  <div>
-                    <button type="button">
-                      <Minus />
-                    </button>
-                    <span>1</span>
-                    <button type="button">
-                      <Plus />
-                    </button>
-                  </div>
+                  <QuantityCoffees />
                   <button type="button">
                     <ShoppingCart size={22} weight="fill" />
                   </button>

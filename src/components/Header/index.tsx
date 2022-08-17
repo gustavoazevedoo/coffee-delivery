@@ -1,6 +1,6 @@
 import { MapPin, ShoppingCart } from 'phosphor-react';
 import { NavLink } from 'react-router-dom';
-import { HeaderContainer, Location, Cart } from './style';
+import { HeaderContainer, Location, Cart } from './styles';
 
 import LogoCoffeDelivery from '../../assets/logo-coffe-delivery.svg';
 
@@ -20,7 +20,7 @@ export function Header() {
         <NavLink to="/chekout">
           <Cart>
             <ShoppingCart size={22} weight="fill" />
-            <span>1</span>
+            <span>2</span>
           </Cart>
         </NavLink>
       </div>

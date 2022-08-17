@@ -156,24 +156,6 @@ export const AddToCart = styled.div`
   display: flex;
   gap: 0.5rem;
 
-  > div {
-    background-color: ${({ theme }) => theme['gray-400']};
-    border-radius: 6px;
-    padding: 0.5rem 0;
-    display: flex;
-    align-items: center;
-
-    > button {
-      display: flex;
-      align-items: center;
-      border: none;
-      cursor: pointer;
-      margin-inline: 0.5rem;
-      color: ${({ theme }) => theme['purple-500']};
-      background: transparent;
-    }
-  }
-
   > button {
     display: flex;
     align-items: center;
@@ -183,6 +165,12 @@ export const AddToCart = styled.div`
     background: ${({ theme }) => theme['purple-700']};
     padding: 0.5rem;
     border-radius: 6px;
+
+    transition: background 200ms linear;
+
+    &:hover {
+      background: ${({ theme }) => theme['purple-500']};
+    }
   }
 
 `;
