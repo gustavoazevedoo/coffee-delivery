@@ -1,5 +1,6 @@
+/* eslint-disable no-unused-vars */
 import {
-  createContext, ReactNode, useMemo, useState,
+  createContext, ReactNode, useCallback, useMemo, useState,
 } from 'react';
 import { Coffee } from '../utils/coffees';
 
@@ -9,8 +10,11 @@ interface ICartCoffee extends Coffee {
 
 interface CartContextType {
   cartCoffees: ICartCoffee[]
-  // eslint-disable-next-line no-unused-vars
+  cartLength: number
   addNewCoffee: (data: ICartCoffee) => void
+  incrementCoffeeQuantity: (coffeeId: number) => void
+  decrementCoffeeQuantity: (coffeeId: number) => void
+  removeCoffee: (coffeeId: number) => void
 }
 
 export const CartContext = createContext({} as CartContextType);
@@ -20,9 +24,11 @@ interface CartProviderProps {
 }
 export function CartProvider({ children }: CartProviderProps) {
   const [cartCoffees, setCartCoffees] = useState<ICartCoffee[]>([]);
+  const cartLength = cartCoffees.length;
+  console.log(cartLength);
   console.log(cartCoffees);
 
-  function addNewCoffee(data: ICartCoffee) {
+  const addNewCoffee = useCallback((data: ICartCoffee) => {
     const coffeeIndex = cartCoffees.findIndex(((coffee) => coffee.id === data.id));
     const coffeeAlreadyInCart = coffeeIndex !== -1;
 
@@ -42,12 +48,65 @@ export function CartProvider({ children }: CartProviderProps) {
     }
 
     setCartCoffees((prevState) => [...prevState, data]);
-  }
+  }, [cartCoffees]);
+
+  const incrementCoffeeQuantity = useCallback((coffeeId: number) => {
+    const selectedCoffee = cartCoffees.find((coffee) => coffee.id === coffeeId);
+
+    if (selectedCoffee) {
+      const newCart = cartCoffees.map((coffee) => {
+        if (coffee.id === selectedCoffee?.id) {
+          return {
+            ...selectedCoffee,
+            quantity: selectedCoffee.quantity + 1,
+          };
+        }
+        return coffee;
+      });
+
+      setCartCoffees(newCart);
+    }
+  }, [cartCoffees]);
+
+  const decrementCoffeeQuantity = useCallback((coffeeId: number) => {
+    const selectedCoffee = cartCoffees.find((coffee) => coffee.id === coffeeId);
+
+    if (selectedCoffee) {
+      const newCart = cartCoffees.map((coffee) => {
+        if (coffee.id === selectedCoffee?.id) {
+          return {
+            ...selectedCoffee,
+            quantity: selectedCoffee.quantity - 1,
+          };
+        }
+        return coffee;
+      });
+
+      setCartCoffees(newCart);
+    }
+  }, [cartCoffees]);
+
+  const removeCoffee = useCallback((coffeeId: number) => {
+    const filteredCartCoffees = cartCoffees.filter((coffee) => coffee.id !== coffeeId);
+
+    setCartCoffees(filteredCartCoffees);
+  }, [cartCoffees]);
 
   const cartContextValue = useMemo(() => ({
     cartCoffees,
+    cartLength,
     addNewCoffee,
-  }), [cartCoffees]);
+    incrementCoffeeQuantity,
+    decrementCoffeeQuantity,
+    removeCoffee,
+  }), [
+    cartCoffees,
+    addNewCoffee,
+    cartLength,
+    incrementCoffeeQuantity,
+    decrementCoffeeQuantity,
+    removeCoffee,
+  ]);
 
   return (
     <CartContext.Provider value={cartContextValue}>

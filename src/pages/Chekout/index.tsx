@@ -107,7 +107,7 @@ export function Chekout() {
         <Title>Cafés selecionados</Title>
         <Container radius>
           {cartCoffees.map((coffee) => (
-            <CoffeeCartCard coffee={coffee} />
+            <CoffeeCartCard key={coffee.id} coffee={coffee} />
           ))}
 
           <Total>

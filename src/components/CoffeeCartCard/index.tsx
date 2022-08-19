@@ -1,5 +1,7 @@
 /* eslint-disable react/no-unused-prop-types */
 import { Minus, Plus, Trash } from 'phosphor-react';
+import { useContext } from 'react';
+import { CartContext } from '../../contexts/CartContext';
 import {
   CoffeeCartCardContainer, Divider, QuantityCoffeesContainer, RemoveFromCart,
 } from './style';
@@ -17,6 +19,26 @@ interface CoffeeCartCardProps {
 }
 
 export function CoffeeCartCard({ coffee }: CoffeeCartCardProps) {
+  const {
+    incrementCoffeeQuantity,
+    decrementCoffeeQuantity,
+    removeCoffee,
+  } = useContext(CartContext);
+
+  function handleIncrementCoffeeQuantity() {
+    incrementCoffeeQuantity(coffee.id);
+  }
+
+  function handleDecrementCoffeeQuantity() {
+    if (coffee.quantity > 1) {
+      decrementCoffeeQuantity(coffee.id);
+    }
+  }
+
+  function handleRemoveCoffee() {
+    removeCoffee(coffee.id);
+  }
+
   return (
     <>
       <CoffeeCartCardContainer>
@@ -26,16 +48,23 @@ export function CoffeeCartCard({ coffee }: CoffeeCartCardProps) {
             <strong>{coffee.title}</strong>
             <RemoveFromCart>
               <QuantityCoffeesContainer>
-                <button type="button">
+                <button
+                  type="button"
+                  onClick={handleDecrementCoffeeQuantity}
+                >
                   <Minus />
                 </button>
                 <span>{coffee.quantity}</span>
-                <button type="button">
+                <button
+                  type="button"
+                  onClick={handleIncrementCoffeeQuantity}
+                >
                   <Plus />
                 </button>
               </QuantityCoffeesContainer>
               <button
                 type="button"
+                onClick={handleRemoveCoffee}
               >
                 <Trash size={16} />
                 Remover

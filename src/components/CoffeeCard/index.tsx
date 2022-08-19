@@ -1,7 +1,9 @@
-import { Minus, Plus, ShoppingCart } from "phosphor-react";
-import { useContext, useState } from "react";
-import { CartContext } from "../../contexts/CartContext";
-import { AddToCart, CoffeeCardContainer, Label, Price, QuantityCoffeesContainer } from "./styles";
+import { Minus, Plus, ShoppingCart } from 'phosphor-react';
+import { useContext, useState } from 'react';
+import { CartContext } from '../../contexts/CartContext';
+import {
+  AddToCart, CoffeeCardContainer, Label, Price, QuantityCoffeesContainer,
+} from './styles';
 
 type Coffee = {
   id: number,
@@ -17,16 +19,26 @@ interface CoffeeCartProps {
 }
 
 export function CoffeeCard({ coffee }: CoffeeCartProps) {
-  const [quantity, setQuantity] = useState(1)
+  const [quantity, setQuantity] = useState(1);
   const { addNewCoffee } = useContext(CartContext);
 
-  function handleAddNewCoffee(coffee: Coffee) {
+  function handleAddNewCoffee(data: Coffee) {
     const newCoffee = {
-      ...coffee,
+      ...data,
       quantity,
-    }
+    };
 
-    addNewCoffee(newCoffee)
+    addNewCoffee(newCoffee);
+  }
+
+  function handleIncrementQuantity() {
+    setQuantity((prevState) => prevState + 1);
+  }
+
+  function handleDecrementQuantity() {
+    if (quantity > 1) {
+      setQuantity((prevState) => prevState - 1);
+    }
   }
 
   return (
@@ -50,14 +62,14 @@ export function CoffeeCard({ coffee }: CoffeeCartProps) {
           <QuantityCoffeesContainer>
             <button
               type="button"
-              onClick={() => setQuantity((prevState) => prevState - 1)}
+              onClick={handleDecrementQuantity}
             >
               <Minus />
             </button>
             <span>{quantity}</span>
             <button
               type="button"
-              onClick={() => setQuantity((prevState) => prevState + 1)}
+              onClick={handleIncrementQuantity}
             >
               <Plus />
             </button>
