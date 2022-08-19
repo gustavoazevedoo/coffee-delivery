@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const CoffeeCardContainer = styled.div`
 background-color: ${({ theme }) => theme['gray-200']};

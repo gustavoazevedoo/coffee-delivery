@@ -22,6 +22,8 @@ export function CoffeeCard({ coffee }: CoffeeCartProps) {
   const [quantity, setQuantity] = useState(1);
   const { addNewCoffee } = useContext(CartContext);
 
+  const formattedCoffeeValue = coffee.value.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+
   function handleAddNewCoffee(data: Coffee) {
     const newCoffee = {
       ...data,
@@ -55,7 +57,9 @@ export function CoffeeCard({ coffee }: CoffeeCartProps) {
       <footer>
         <Price>
           <span>R$</span>
-          <strong>{coffee.value}</strong>
+          <strong>
+            {formattedCoffeeValue}
+          </strong>
         </Price>
 
         <AddToCart>

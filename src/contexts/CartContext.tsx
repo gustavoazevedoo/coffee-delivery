@@ -25,8 +25,6 @@ interface CartProviderProps {
 export function CartProvider({ children }: CartProviderProps) {
   const [cartCoffees, setCartCoffees] = useState<ICartCoffee[]>([]);
   const cartLength = cartCoffees.length;
-  console.log(cartLength);
-  console.log(cartCoffees);
 
   const addNewCoffee = useCallback((data: ICartCoffee) => {
     const coffeeIndex = cartCoffees.findIndex(((coffee) => coffee.id === data.id));
@@ -101,8 +99,8 @@ export function CartProvider({ children }: CartProviderProps) {
     removeCoffee,
   }), [
     cartCoffees,
-    addNewCoffee,
     cartLength,
+    addNewCoffee,
     incrementCoffeeQuantity,
     decrementCoffeeQuantity,
     removeCoffee,

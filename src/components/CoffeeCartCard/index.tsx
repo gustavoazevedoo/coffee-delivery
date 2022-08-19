@@ -2,6 +2,7 @@
 import { Minus, Plus, Trash } from 'phosphor-react';
 import { useContext } from 'react';
 import { CartContext } from '../../contexts/CartContext';
+import { formatPrice } from '../../utils/formatPrice';
 import {
   CoffeeCartCardContainer, Divider, QuantityCoffeesContainer, RemoveFromCart,
 } from './style';
@@ -24,6 +25,8 @@ export function CoffeeCartCard({ coffee }: CoffeeCartCardProps) {
     decrementCoffeeQuantity,
     removeCoffee,
   } = useContext(CartContext);
+
+  const formattedCoffeeValue = formatPrice(coffee.value);
 
   function handleIncrementCoffeeQuantity() {
     incrementCoffeeQuantity(coffee.id);
@@ -72,7 +75,7 @@ export function CoffeeCartCard({ coffee }: CoffeeCartCardProps) {
             </RemoveFromCart>
           </div>
         </div>
-        <span className="price">{coffee.value}</span>
+        <span className="price">{formattedCoffeeValue}</span>
       </CoffeeCartCardContainer>
 
       <Divider />

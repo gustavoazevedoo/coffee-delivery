@@ -5,6 +5,7 @@ import { useContext } from 'react';
 
 import { CoffeeCartCard } from '../../components/CoffeeCartCard';
 import { CartContext } from '../../contexts/CartContext';
+import { formatPrice } from '../../utils/formatPrice';
 
 import {
   ChekoutContainer,
@@ -21,6 +22,16 @@ import {
 
 export function Chekout() {
   const { cartCoffees } = useContext(CartContext);
+
+  const totalCoffeesPrice = Number(cartCoffees.reduce((acc, coffee) => (
+    acc + coffee.value * coffee.quantity
+  ), 0));
+  const deliveryValue = 3.5;
+  const totalValue = (totalCoffeesPrice + deliveryValue);
+
+  const formattedTotalCoffeesPrice = formatPrice(totalCoffeesPrice);
+  const formattedDeliveryValue = formatPrice(deliveryValue);
+  const formattedTotalValue = formatPrice(totalValue);
 
   return (
     <ChekoutContainer>
@@ -113,15 +124,15 @@ export function Chekout() {
           <Total>
             <div className="row">
               <span>Total de items</span>
-              <span>R$ 29,70</span>
+              <span>{formattedTotalCoffeesPrice}</span>
             </div>
             <div className="row">
               <span>Entrega</span>
-              <span>R$ 3,50</span>
+              <span>{formattedDeliveryValue}</span>
             </div>
             <div className="row">
               <span>Total</span>
-              <span>R$ 33,20</span>
+              <span>{formattedTotalValue}</span>
             </div>
           </Total>
 
