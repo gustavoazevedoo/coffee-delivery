@@ -4,11 +4,11 @@ import {
 
 import { coffees } from '../../utils/coffees';
 import {
-  CoffeeList, Hero, Item, ItemsContainer, CoffeeCard, Label, AddToCart, Price, HomeContainer,
+  CoffeeList, Hero, Item, ItemsContainer, HomeContainer,
 } from './styles';
 
 import HeroImage from '../../assets/hero-image.svg';
-import { QuantityCoffees } from '../../components/QuantityCoffees';
+import { CoffeeCard } from '../../components/CoffeeCard';
 
 export function Home() {
   return (
@@ -53,30 +53,7 @@ export function Home() {
 
         <CoffeeList>
           {coffees.map((coffee) => (
-            <CoffeeCard>
-              <img src={coffee.img} alt={coffee.title} />
-              <Label>
-                {coffee.label.map((label) => (
-                  <span>{label}</span>
-                ))}
-              </Label>
-              <strong>{coffee.title}</strong>
-              <p>{coffee.description}</p>
-
-              <footer>
-                <Price>
-                  <span>R$</span>
-                  <strong>{coffee.value}</strong>
-                </Price>
-
-                <AddToCart>
-                  <QuantityCoffees />
-                  <button type="button">
-                    <ShoppingCart size={22} weight="fill" />
-                  </button>
-                </AddToCart>
-              </footer>
-            </CoffeeCard>
+            <CoffeeCard coffee={coffee} key={coffee.id} />
           ))}
         </CoffeeList>
       </section>

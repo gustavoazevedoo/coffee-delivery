@@ -13,7 +13,7 @@ import havaianoImage from '../assets/coffees/havaiano.svg';
 import arabeImage from '../assets/coffees/arabe.svg';
 import irlandesImage from '../assets/coffees/irlandes.svg';
 
-type Coffee = {
+export type Coffee = {
   id: number,
   img: string,
   title: string,

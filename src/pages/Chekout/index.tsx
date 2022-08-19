@@ -1,11 +1,10 @@
 import {
-  Bank, CreditCard, CurrencyDollar, MapPinLine, Money, Trash,
+  Bank, CreditCard, CurrencyDollar, MapPinLine, Money,
 } from 'phosphor-react';
+import { useContext } from 'react';
 
-import americanoImage from '../../assets/coffees/americano.svg';
-import latteImage from '../../assets/coffees/latte.svg';
-
-import { QuantityCoffees } from '../../components/QuantityCoffees';
+import { CoffeeCartCard } from '../../components/CoffeeCartCard';
+import { CartContext } from '../../contexts/CartContext';
 
 import {
   ChekoutContainer,
@@ -15,15 +14,14 @@ import {
   Form,
   Input,
   PaymentMethod,
-  RemoveFromCart,
-  SelectedCoffee,
-  Divider,
   Total,
   StyledButton,
   PaymentButton,
 } from './styles';
 
 export function Chekout() {
+  const { cartCoffees } = useContext(CartContext);
+
   return (
     <ChekoutContainer>
       <section>
@@ -108,47 +106,9 @@ export function Chekout() {
       <section>
         <Title>Cafés selecionados</Title>
         <Container radius>
-          <SelectedCoffee>
-            <div className="info">
-              <img src={americanoImage} alt="" />
-              <div>
-                <strong>Expresso Tradicional</strong>
-                <RemoveFromCart>
-                  <QuantityCoffees />
-                  <button
-                    type="button"
-                  >
-                    <Trash size={16} />
-                    Remover
-                  </button>
-                </RemoveFromCart>
-              </div>
-            </div>
-            <span className="price">R$ 9,90</span>
-          </SelectedCoffee>
-
-          <Divider />
-
-          <SelectedCoffee>
-            <div className="info">
-              <img src={latteImage} alt="" />
-              <div>
-                <strong>Latte</strong>
-                <RemoveFromCart>
-                  <QuantityCoffees />
-                  <button
-                    type="button"
-                  >
-                    <Trash size={16} />
-                    Remover
-                  </button>
-                </RemoveFromCart>
-              </div>
-            </div>
-            <span className="price">R$ 19,80</span>
-          </SelectedCoffee>
-
-          <Divider />
+          {cartCoffees.map((coffee) => (
+            <CoffeeCartCard coffee={coffee} />
+          ))}
 
           <Total>
             <div className="row">
