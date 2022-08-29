@@ -1,45 +1,45 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const CoffeeCardContainer = styled.div`
-background-color: ${({ theme }) => theme['gray-200']};
-padding: 1.25rem;
-border-radius: 6px 36px;
-display: flex;
-flex-direction: column;
-align-items: center;
+  background-color: ${({ theme }) => theme['gray-200']};
+  padding: 1.25rem;
+  border-radius: 6px 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-> img {
-  width: 7.5rem;
-  aspect-ratio: 1;
-  margin-top: -2.5rem;
-}
+  > img {
+    width: 7.5rem;
+    aspect-ratio: 1;
+    margin-top: -2.5rem;
+  }
 
-> strong {
-  color: ${({ theme }) => theme['gray-800']};
-  font-weight: bold;
-  line-height: 1.3;
-  margin-top: 1rem;
-  font-size: 1.25rem;
-  font-family: 'Baloo 2', cursive;
-}
+  > strong {
+    color: ${({ theme }) => theme['gray-800']};
+    font-weight: bold;
+    line-height: 1.3;
+    margin-top: 1rem;
+    font-size: 1.25rem;
+    font-family: 'Baloo 2', cursive;
+  }
 
-> p {
-  max-width: 13.5rem;
-  text-align: center;
-  font-size: 0.875rem;
-  line-height: 1.3;
-  color: ${({ theme }) => theme['gray-600']};
-  margin-top: 0.5rem;
-}
+  > p {
+    max-width: 13.5rem;
+    text-align: center;
+    font-size: 0.875rem;
+    line-height: 1.3;
+    color: ${({ theme }) => theme['gray-600']};
+    margin-top: 0.5rem;
+  }
 
-> footer {
+  > footer {
     display: flex;
     margin-top: 2rem;
     align-items: center;
     width: 100%;
     justify-content: space-between;
   }
-`;
+`
 
 export const Label = styled.div`
   display: flex;
@@ -56,7 +56,7 @@ export const Label = styled.div`
     border-radius: 100vmax;
     padding: 0.25rem 0.5rem;
   }
-`;
+`
 
 export const Price = styled.div`
   color: ${({ theme }) => theme['gray-700']};
@@ -74,7 +74,7 @@ export const Price = styled.div`
     font-weight: 800;
     font-size: 1.5rem;
   }
-`;
+`
 
 export const AddToCart = styled.div`
   display: flex;
@@ -96,7 +96,7 @@ export const AddToCart = styled.div`
       background: ${({ theme }) => theme['purple-500']};
     }
   }
-`;
+`
 
 export const QuantityCoffeesContainer = styled.div`
   background-color: ${({ theme }) => theme['gray-400']};
@@ -122,4 +122,4 @@ export const QuantityCoffeesContainer = styled.div`
       color: ${({ theme }) => theme['purple-700']};
     }
   }
-`;
+`

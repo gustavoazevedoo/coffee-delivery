@@ -1,14 +1,10 @@
-import {
-  Coffee, Package, ShoppingCart, Timer,
-} from 'phosphor-react';
+import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
 
-import { coffees } from '../../utils/coffees';
-import {
-  CoffeeList, Hero, Item, ItemsContainer, HomeContainer,
-} from './styles';
+import { coffees } from '../../utils/coffees'
+import { CoffeeList, Hero, Item, ItemsContainer, HomeContainer } from './styles'
 
-import HeroImage from '../../assets/hero-image.svg';
-import { CoffeeCard } from '../../components/CoffeeCard';
+import HeroImage from '../../assets/hero-image.svg'
+import { CoffeeCard } from '../../components/CoffeeCard'
 
 export function Home() {
   return (
@@ -16,7 +12,10 @@ export function Home() {
       <Hero>
         <div className="text-content">
           <strong>Encontre o café perfeito para qualquer hora do dia</strong>
-          <p>Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora</p>
+          <p>
+            Com o Coffee Delivery você recebe seu café onde estiver, a qualquer
+            hora
+          </p>
 
           <ItemsContainer>
             <Item variant="orange">
@@ -58,5 +57,5 @@ export function Home() {
         </CoffeeList>
       </section>
     </HomeContainer>
-  );
+  )
 }

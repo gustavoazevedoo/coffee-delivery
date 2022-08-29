@@ -1,45 +1,45 @@
 /* eslint-disable react/no-unused-prop-types */
-import { Minus, Plus, Trash } from 'phosphor-react';
-import { useContext } from 'react';
-import { CartContext } from '../../contexts/CartContext';
-import { formatPrice } from '../../utils/formatPrice';
+import { Minus, Plus, Trash } from 'phosphor-react'
+import { useContext } from 'react'
+import { CartContext } from '../../contexts/CartContext'
+import { formatPrice } from '../../utils/formatPrice'
 import {
-  CoffeeCartCardContainer, Divider, QuantityCoffeesContainer, RemoveFromCart,
-} from './style';
+  CoffeeCartCardContainer,
+  Divider,
+  QuantityCoffeesContainer,
+  RemoveFromCart,
+} from './style'
 
 interface CoffeeCartCardProps {
   coffee: {
-    id: number,
-    img: string,
-    title: string,
-    label: string[],
-    description: string,
-    value: number,
+    id: number
+    img: string
+    title: string
+    label: string[]
+    description: string
+    value: number
     quantity: number
   }
 }
 
 export function CoffeeCartCard({ coffee }: CoffeeCartCardProps) {
-  const {
-    incrementCoffeeQuantity,
-    decrementCoffeeQuantity,
-    removeCoffee,
-  } = useContext(CartContext);
+  const { incrementCoffeeQuantity, decrementCoffeeQuantity, removeCoffee } =
+    useContext(CartContext)
 
-  const formattedCoffeeValue = formatPrice(coffee.value);
+  const formattedCoffeeValue = formatPrice(coffee.value)
 
   function handleIncrementCoffeeQuantity() {
-    incrementCoffeeQuantity(coffee.id);
+    incrementCoffeeQuantity(coffee.id)
   }
 
   function handleDecrementCoffeeQuantity() {
     if (coffee.quantity > 1) {
-      decrementCoffeeQuantity(coffee.id);
+      decrementCoffeeQuantity(coffee.id)
     }
   }
 
   function handleRemoveCoffee() {
-    removeCoffee(coffee.id);
+    removeCoffee(coffee.id)
   }
 
   return (
@@ -51,24 +51,15 @@ export function CoffeeCartCard({ coffee }: CoffeeCartCardProps) {
             <strong>{coffee.title}</strong>
             <RemoveFromCart>
               <QuantityCoffeesContainer>
-                <button
-                  type="button"
-                  onClick={handleDecrementCoffeeQuantity}
-                >
+                <button type="button" onClick={handleDecrementCoffeeQuantity}>
                   <Minus />
                 </button>
                 <span>{coffee.quantity}</span>
-                <button
-                  type="button"
-                  onClick={handleIncrementCoffeeQuantity}
-                >
+                <button type="button" onClick={handleIncrementCoffeeQuantity}>
                   <Plus />
                 </button>
               </QuantityCoffeesContainer>
-              <button
-                type="button"
-                onClick={handleRemoveCoffee}
-              >
+              <button type="button" onClick={handleRemoveCoffee}>
                 <Trash size={16} />
                 Remover
               </button>
@@ -80,5 +71,5 @@ export function CoffeeCartCard({ coffee }: CoffeeCartCardProps) {
 
       <Divider />
     </>
-  );
+  )
 }

@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components'
 
 export const SuccessContainer = styled.div`
   > div {
@@ -7,13 +7,13 @@ export const SuccessContainer = styled.div`
   }
 
   padding: 5rem 0;
-`;
+`
 
 export const ImageContainer = styled.div`
   flex: 1;
   display: flex;
   align-items: flex-end;
-`;
+`
 
 export const Title = styled.h1`
   font-family: 'Baloo 2', cursive;
@@ -21,7 +21,7 @@ export const Title = styled.h1`
   font-size: 2rem;
   font-weight: 800;
   color: ${({ theme }) => theme['yellow-700']};
-`;
+`
 
 export const Description = styled.p`
   font-size: 1.25rem;
@@ -29,7 +29,7 @@ export const Description = styled.p`
   line-height: 1.3;
 
   margin-top: 0.25rem;
-`;
+`
 
 export const OrderInfos = styled.div`
   flex: 1;
@@ -40,8 +40,11 @@ export const OrderInfos = styled.div`
 
   border: 1px solid transparent;
 
-  background: linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)) padding-box padding-box, linear-gradient(to right, rgb(219, 172, 44), rgb(128, 71, 248)) border-box border-box;
-`;
+  background: linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255))
+      padding-box padding-box,
+    linear-gradient(to right, rgb(219, 172, 44), rgb(128, 71, 248)) border-box
+      border-box;
+`
 
 interface InfoProps {
   variant: string
@@ -57,7 +60,7 @@ const colorVariants: any = {
   purple: css`
     background: ${({ theme }) => theme['purple-500']};
   `,
-};
+}
 
 export const Info = styled.div<InfoProps>`
   & + & {
@@ -88,4 +91,4 @@ export const Info = styled.div<InfoProps>`
       display: block;
     }
   }
-`;
+`

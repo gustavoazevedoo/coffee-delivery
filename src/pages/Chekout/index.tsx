@@ -1,11 +1,15 @@
 import {
-  Bank, CreditCard, CurrencyDollar, MapPinLine, Money,
-} from 'phosphor-react';
-import { useContext } from 'react';
+  Bank,
+  CreditCard,
+  CurrencyDollar,
+  MapPinLine,
+  Money,
+} from 'phosphor-react'
+import { FormEvent, useContext } from 'react'
 
-import { CoffeeCartCard } from '../../components/CoffeeCartCard';
-import { CartContext } from '../../contexts/CartContext';
-import { formatPrice } from '../../utils/formatPrice';
+import { CoffeeCartCard } from '../../components/CoffeeCartCard'
+import { CartContext } from '../../contexts/CartContext'
+import { formatPrice } from '../../utils/formatPrice'
 
 import {
   ChekoutContainer,
@@ -18,20 +22,29 @@ import {
   Total,
   StyledButton,
   PaymentButton,
-} from './styles';
+} from './styles'
 
 export function Chekout() {
-  const { cartCoffees } = useContext(CartContext);
+  const { cartCoffees } = useContext(CartContext)
 
-  const totalCoffeesPrice = Number(cartCoffees.reduce((acc, coffee) => (
-    acc + coffee.value * coffee.quantity
-  ), 0));
-  const deliveryValue = 3.5;
-  const totalValue = (totalCoffeesPrice + deliveryValue);
+  const totalCoffeesPrice = Number(
+    cartCoffees.reduce(
+      (acc, coffee) => acc + coffee.value * coffee.quantity,
+      0,
+    ),
+  )
+  const deliveryValue = 3.5
+  const totalValue = totalCoffeesPrice + deliveryValue
 
-  const formattedTotalCoffeesPrice = formatPrice(totalCoffeesPrice);
-  const formattedDeliveryValue = formatPrice(deliveryValue);
-  const formattedTotalValue = formatPrice(totalValue);
+  const formattedTotalCoffeesPrice = formatPrice(totalCoffeesPrice)
+  const formattedDeliveryValue = formatPrice(deliveryValue)
+  const formattedTotalValue = formatPrice(totalValue)
+
+  function handleSubmit(event: FormEvent) {
+    event.preventDefault()
+
+    console.log(event.target)
+  }
 
   return (
     <ChekoutContainer>
@@ -47,42 +60,18 @@ export function Chekout() {
             </div>
           </Subtitle>
 
-          <Form action="/">
-            <Input
-              className="cep"
-              type="text"
-              placeholder="CEP"
-            />
-            <Input
-              className="street"
-              type="text"
-              placeholder="Rua"
-            />
-            <Input
-              className="number"
-              type="text"
-              placeholder="Número"
-            />
+          <Form id="payment-form" action="/" onSubmit={handleSubmit}>
+            <Input className="cep" type="text" placeholder="CEP" />
+            <Input className="street" type="text" placeholder="Rua" />
+            <Input className="number" type="text" placeholder="Número" />
             <Input
               className="complement"
               type="text"
               placeholder="Complemento"
             />
-            <Input
-              className="bairro"
-              type="text"
-              placeholder="Bairro"
-            />
-            <Input
-              className="city"
-              type="text"
-              placeholder="Cidade"
-            />
-            <Input
-              className="uf"
-              type="text"
-              placeholder="UF"
-            />
+            <Input className="bairro" type="text" placeholder="Bairro" />
+            <Input className="city" type="text" placeholder="Cidade" />
+            <Input className="uf" type="text" placeholder="UF" />
           </Form>
         </Container>
 
@@ -91,7 +80,9 @@ export function Chekout() {
             <CurrencyDollar size={22} color="#8047F8" />
             <div>
               <strong>Pagamento</strong>
-              <p>O pagamento é feito na entrega. Escolha a forma que deseja pagar</p>
+              <p>
+                O pagamento é feito na entrega. Escolha a forma que deseja pagar
+              </p>
             </div>
           </Subtitle>
 
@@ -136,11 +127,11 @@ export function Chekout() {
             </div>
           </Total>
 
-          <StyledButton type="button">
+          <StyledButton type="submit" form="payment-form">
             Confirmar pedido
           </StyledButton>
         </Container>
       </section>
     </ChekoutContainer>
-  );
+  )
 }

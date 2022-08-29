@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const HeaderContainer = styled.header`
   background-color: ${({ theme }) => theme['gray-100']};
@@ -15,7 +15,7 @@ export const HeaderContainer = styled.header`
     align-items: center;
     gap: 0.75rem;
   }
-`;
+`
 
 export const Location = styled.div`
   display: flex;
@@ -31,7 +31,7 @@ export const Location = styled.div`
 
   font-size: 0.875rem;
   line-height: 1.3;
-`;
+`
 
 export const Cart = styled.div`
   background-color: ${({ theme }) => theme['yellow-300']};
@@ -58,4 +58,4 @@ export const Cart = styled.div`
     font-weight: bold;
     color: ${({ theme }) => theme.white};
   }
-`;
+`

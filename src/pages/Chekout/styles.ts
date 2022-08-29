@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components'
 
 export const ChekoutContainer = styled.div`
   margin-block: 2.5rem;
@@ -6,7 +6,7 @@ export const ChekoutContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr minmax(min-content, 28rem);
   gap: 2rem;
-`;
+`
 
 interface ContainerProps {
   radius?: boolean
@@ -21,10 +21,12 @@ export const Container = styled.div<ContainerProps>`
     margin-top: 0.75rem;
   }
 
-  ${({ radius }) => radius && css`
-    border-radius: 6px 44px;
-  `}
-`;
+  ${({ radius }) =>
+    radius &&
+    css`
+      border-radius: 6px 44px;
+    `}
+`
 
 export const Subtitle = styled.div`
   display: flex;
@@ -43,7 +45,7 @@ export const Subtitle = styled.div`
     line-height: 1.3;
     color: ${({ theme }) => theme['gray-700']};
   }
-`;
+`
 
 export const Title = styled.h3`
   font-family: 'Baloo 2', cursive;
@@ -52,7 +54,7 @@ export const Title = styled.h3`
   font-weight: bold;
   color: ${({ theme }) => theme['gray-800']};
   margin-bottom: 1rem;
-`;
+`
 
 export const Input = styled.input`
   background: ${({ theme }) => theme['gray-400']};
@@ -61,7 +63,7 @@ export const Input = styled.input`
 
   padding: 0.75rem;
 
-  font-size: .875rem;
+  font-size: 0.875rem;
   line-height: 1.3;
   color: ${({ theme }) => theme['gray-700']};
   outline: none;
@@ -73,13 +75,13 @@ export const Input = styled.input`
   &:focus {
     border: 1px solid ${({ theme }) => theme['yellow-700']};
   }
-`;
+`
 
 export const PaymentMethod = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0.75rem;
-`;
+`
 
 interface PaymentButtonProps {
   selected?: boolean
@@ -110,34 +112,32 @@ export const PaymentButton = styled.button<PaymentButtonProps>`
     background: ${({ theme }) => theme['gray-500']};
   }
 
-  ${({ selected }) => selected && css`
-    border: 1px solid ${({ theme }) => theme['purple-500']};
-    background: ${({ theme }) => theme['purple-300']};
-
-    &:hover {
+  ${({ selected }) =>
+    selected &&
+    css`
       border: 1px solid ${({ theme }) => theme['purple-500']};
       background: ${({ theme }) => theme['purple-300']};
-    }
-  `}
 
-
-`;
+      &:hover {
+        border: 1px solid ${({ theme }) => theme['purple-500']};
+        background: ${({ theme }) => theme['purple-300']};
+      }
+    `}
+`
 
 export const Form = styled.form`
   display: grid;
   grid-template-areas:
-    "cep . . "
-    "street street street"
-    "number complement complement"
-    "bairro city uf"
-  ;
+    'cep . . '
+    'street street street'
+    'number complement complement'
+    'bairro city uf';
 
   grid-template-columns: min-content 1fr 3.75rem;
 
   gap: 1rem 0.75rem;
 
   position: relative;
-
 
   .cep {
     grid-area: cep;
@@ -166,7 +166,7 @@ export const Form = styled.form`
   .bairro {
     grid-area: bairro;
   }
-`;
+`
 
 export const Total = styled.div`
   color: ${({ theme }) => theme['gray-700']};
@@ -191,7 +191,7 @@ export const Total = styled.div`
       color: ${({ theme }) => theme['gray-800']};
     }
   }
-`;
+`
 
 export const StyledButton = styled.button`
   text-transform: uppercase;
@@ -213,4 +213,4 @@ export const StyledButton = styled.button`
   &:hover {
     background-color: ${({ theme }) => theme['yellow-700']};
   }
-`;
+`

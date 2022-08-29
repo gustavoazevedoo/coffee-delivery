@@ -1,26 +1,26 @@
-import expressoImage from '../assets/coffees/expresso.svg';
-import americanoImage from '../assets/coffees/americano.svg';
-import expressoCremosoImage from '../assets/coffees/expresso-cremoso.svg';
-import geladoImage from '../assets/coffees/gelado.svg';
-import comLeiteImage from '../assets/coffees/com-leite.svg';
-import latteImage from '../assets/coffees/latte.svg';
-import capuccinoImage from '../assets/coffees/capuccino.svg';
-import macchiatoImage from '../assets/coffees/macchiato.svg';
-import mocaccinoImage from '../assets/coffees/mocaccino.svg';
-import chocolateImage from '../assets/coffees/chocolate.svg';
-import cubanoImage from '../assets/coffees/cubano.svg';
-import havaianoImage from '../assets/coffees/havaiano.svg';
-import arabeImage from '../assets/coffees/arabe.svg';
-import irlandesImage from '../assets/coffees/irlandes.svg';
+import expressoImage from '../assets/coffees/expresso.svg'
+import americanoImage from '../assets/coffees/americano.svg'
+import expressoCremosoImage from '../assets/coffees/expresso-cremoso.svg'
+import geladoImage from '../assets/coffees/gelado.svg'
+import comLeiteImage from '../assets/coffees/com-leite.svg'
+import latteImage from '../assets/coffees/latte.svg'
+import capuccinoImage from '../assets/coffees/capuccino.svg'
+import macchiatoImage from '../assets/coffees/macchiato.svg'
+import mocaccinoImage from '../assets/coffees/mocaccino.svg'
+import chocolateImage from '../assets/coffees/chocolate.svg'
+import cubanoImage from '../assets/coffees/cubano.svg'
+import havaianoImage from '../assets/coffees/havaiano.svg'
+import arabeImage from '../assets/coffees/arabe.svg'
+import irlandesImage from '../assets/coffees/irlandes.svg'
 
 export type Coffee = {
-  id: number,
-  img: string,
-  title: string,
-  label: string[],
-  description: string,
-  value: number,
-};
+  id: number
+  img: string
+  title: string
+  label: string[]
+  description: string
+  value: number
+}
 
 export const coffees: Coffee[] = [
   {
@@ -140,4 +140,4 @@ export const coffees: Coffee[] = [
     description: 'Bebida a base de café, uísque irlandês, açúcar e chantilly',
     value: 9.9,
   },
-];
+]

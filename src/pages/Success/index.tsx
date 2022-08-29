@@ -1,16 +1,21 @@
-import { CurrencyDollar, MapPin, Timer } from 'phosphor-react';
+import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
 import {
   Description,
   ImageContainer,
-  Info, OrderInfos, SuccessContainer, Title,
-} from './styles';
-import illustration from '../../assets/illustration.svg';
+  Info,
+  OrderInfos,
+  SuccessContainer,
+  Title,
+} from './styles'
+import illustration from '../../assets/illustration.svg'
 
 export function Success() {
   return (
     <SuccessContainer>
       <Title>Uhu! Pedido confirmado</Title>
-      <Description>Agora é só aguardar que logo o café chegará até você</Description>
+      <Description>
+        Agora é só aguardar que logo o café chegará até você
+      </Description>
 
       <div>
         <OrderInfos>
@@ -19,9 +24,7 @@ export function Success() {
               <MapPin weight="fill" />
             </div>
             <p>
-              Entrega em:
-              {' '}
-              <strong>Rua João Daniel Martinelli, 102</strong>
+              Entrega em: <strong>Rua João Daniel Martinelli, 102</strong>
               Farrapos - Porto Alegre, RS
             </p>
           </Info>
@@ -52,5 +55,5 @@ export function Success() {
         </ImageContainer>
       </div>
     </SuccessContainer>
-  );
+  )
 }

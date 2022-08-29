@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const CoffeeCartCardContainer = styled.div`
   display: flex;
@@ -27,7 +27,7 @@ export const CoffeeCartCardContainer = styled.div`
       font-weight: normal;
     }
   }
-`;
+`
 
 export const RemoveFromCart = styled.div`
   display: flex;
@@ -56,14 +56,14 @@ export const RemoveFromCart = styled.div`
       color: ${({ theme }) => theme['purple-500']};
     }
   }
-`;
+`
 
 export const Divider = styled.div`
   width: 100%;
   background-color: ${({ theme }) => theme['gray-400']};
   margin-block: 1.5rem;
   height: 1px;
-`;
+`
 
 export const QuantityCoffeesContainer = styled.div`
   background-color: ${({ theme }) => theme['gray-400']};
@@ -89,4 +89,4 @@ export const QuantityCoffeesContainer = styled.div`
       color: ${({ theme }) => theme['purple-700']};
     }
   }
-`;
+`

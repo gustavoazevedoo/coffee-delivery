@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components'
 
 export const HomeContainer = styled.div`
   section {
@@ -13,14 +13,13 @@ export const HomeContainer = styled.div`
       margin-bottom: 3.375rem;
     }
   }
-`;
+`
 
 export const Hero = styled.div`
   display: grid;
   grid-template-columns: 1.25fr 1fr;
   gap: 3.5rem;
   padding-block: 6rem;
-
 
   .text-content > strong {
     font-size: 3rem;
@@ -35,14 +34,14 @@ export const Hero = styled.div`
     line-height: 1.3;
     color: ${({ theme }) => theme['gray-800']};
   }
-`;
+`
 
 export const ItemsContainer = styled.div`
   margin-top: 4rem;
   display: flex;
   flex-wrap: wrap;
   gap: 1.25rem 2.5rem;
-`;
+`
 
 interface ItemsProps {
   variant: string
@@ -61,7 +60,7 @@ const colorVariants: any = {
   purple: css`
     background: ${({ theme }) => theme['purple-500']};
   `,
-};
+}
 
 export const Item = styled.div<ItemsProps>`
   display: flex;
@@ -85,11 +84,11 @@ export const Item = styled.div<ItemsProps>`
     line-height: 1.3;
     min-width: 12rem;
   }
-`;
+`
 
 export const CoffeeList = styled.main`
   margin-top: 2rem;
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
-`;
+`
