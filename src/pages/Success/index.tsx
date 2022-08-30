@@ -8,8 +8,29 @@ import {
   Title,
 } from './styles'
 import illustration from '../../assets/illustration.svg'
+import { useLocation } from 'react-router-dom'
 
 export function Success() {
+  interface Teste {
+    street: string
+    number: string
+    district: string
+    city: string
+    uf: string
+    paymentMethod: 'credit' | 'debit' | 'cash'
+  }
+
+  const location = useLocation()
+
+  const { street, number, district, city, uf, paymentMethod } =
+    location.state as Teste
+
+  const paymentMethods = {
+    credit: 'Cartão de crédito',
+    debit: 'Cartão de débito',
+    cash: 'Dinheiro',
+  }
+
   return (
     <SuccessContainer>
       <Title>Uhu! Pedido confirmado</Title>
@@ -24,8 +45,11 @@ export function Success() {
               <MapPin weight="fill" />
             </div>
             <p>
-              Entrega em: <strong>Rua João Daniel Martinelli, 102</strong>
-              Farrapos - Porto Alegre, RS
+              Entrega em:{' '}
+              <strong>
+                {street}, {number}
+              </strong>
+              {district} - {city}, {uf}
             </p>
           </Info>
 
@@ -45,7 +69,7 @@ export function Success() {
             </div>
             <p>
               Pagamento na entrega
-              <strong>Cartão de crédito</strong>
+              <strong>{paymentMethods[paymentMethod]}</strong>
             </p>
           </Info>
         </OrderInfos>

@@ -77,7 +77,7 @@ export const Input = styled.input`
   }
 `
 
-export const PaymentMethod = styled.div`
+export const PaymentMethodContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0.75rem;
@@ -131,7 +131,7 @@ export const Form = styled.form`
     'cep . . '
     'street street street'
     'number complement complement'
-    'bairro city uf';
+    'district city uf';
 
   grid-template-columns: min-content 1fr 3.75rem;
 
@@ -163,8 +163,8 @@ export const Form = styled.form`
     grid-area: uf;
   }
 
-  .bairro {
-    grid-area: bairro;
+  .district {
+    grid-area: district;
   }
 `
 
