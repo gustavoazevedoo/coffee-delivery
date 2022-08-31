@@ -214,3 +214,40 @@ export const StyledButton = styled.button`
     background-color: ${({ theme }) => theme['yellow-700']};
   }
 `
+
+export const NoCoffeeSelected = styled.div`
+  > strong {
+    font-size: 1.5rem;
+    font-family: 'Baloo 2', cursive;
+    line-height: 1.3;
+    color: ${({ theme }) => theme['gray-900']};
+  }
+
+  > p {
+    font-size: 0.875rem;
+    line-height: 1.3;
+    color: ${({ theme }) => theme['gray-700']};
+    margin-top: 0.25rem;
+
+    a {
+      color: ${({ theme }) => theme['purple-500']};
+      text-decoration: none;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: ${({ theme }) => theme['purple-500']};
+        transition: width 150ms ease-in;
+      }
+
+      &:hover::after {
+        width: 100%;
+      }
+    }
+  }
+`

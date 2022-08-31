@@ -7,7 +7,7 @@ import {
 } from 'phosphor-react'
 import { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { CoffeeCartCard } from '../../components/CoffeeCartCard'
 import { CartContext } from '../../contexts/CartContext'
@@ -24,6 +24,7 @@ import {
   Total,
   StyledButton,
   PaymentButton,
+  NoCoffeeSelected,
 } from './styles'
 
 export function Chekout() {
@@ -181,28 +182,41 @@ export function Chekout() {
       <section>
         <Title>Cafés selecionados</Title>
         <Container radius>
-          {cartCoffees.map((coffee) => (
-            <CoffeeCartCard key={coffee.id} coffee={coffee} />
-          ))}
+          {cartCoffees.length > 0 && (
+            <>
+              {cartCoffees.map((coffee) => (
+                <CoffeeCartCard key={coffee.id} coffee={coffee} />
+              ))}
 
-          <Total>
-            <div className="row">
-              <span>Total de items</span>
-              <span>{formattedTotalCoffeesPrice}</span>
-            </div>
-            <div className="row">
-              <span>Entrega</span>
-              <span>{formattedDeliveryValue}</span>
-            </div>
-            <div className="row">
-              <span>Total</span>
-              <span>{formattedTotalValue}</span>
-            </div>
-          </Total>
+              <Total>
+                <div className="row">
+                  <span>Total de items</span>
+                  <span>{formattedTotalCoffeesPrice}</span>
+                </div>
+                <div className="row">
+                  <span>Entrega</span>
+                  <span>{formattedDeliveryValue}</span>
+                </div>
+                <div className="row">
+                  <span>Total</span>
+                  <span>{formattedTotalValue}</span>
+                </div>
+              </Total>
 
-          <StyledButton type="submit" form="payment-form">
-            Confirmar pedido
-          </StyledButton>
+              <StyledButton type="submit" form="payment-form">
+                Confirmar pedido
+              </StyledButton>
+            </>
+          )}
+          {cartCoffees.length === 0 && (
+            <NoCoffeeSelected>
+              <strong>Nenhum café selecionado</strong>
+              <p>
+                Por favor, click <Link to="/">aqui</Link> e adicione um café ao
+                carrinho
+              </p>
+            </NoCoffeeSelected>
+          )}
         </Container>
       </section>
     </ChekoutContainer>
