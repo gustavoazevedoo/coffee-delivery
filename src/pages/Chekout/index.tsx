@@ -8,6 +8,8 @@ import {
 import { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
+import * as yup from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
 
 import { CoffeeCartCard } from '../../components/CoffeeCartCard'
 import { CartContext } from '../../contexts/CartContext'
@@ -62,7 +64,21 @@ export function Chekout() {
     uf: string
   }
 
-  const { register, handleSubmit } = useForm<ChekoutOrderFormData>()
+  const schema = yup
+    .object({
+      cep: yup.string().required(),
+      city: yup.string().required(),
+      complement: yup.string().required(),
+      district: yup.string().required(),
+      number: yup.string().required(),
+      street: yup.string().required(),
+      uf: yup.string().required(),
+    })
+    .required()
+
+  const { register, handleSubmit } = useForm<ChekoutOrderFormData>({
+    resolver: yupResolver(schema),
+  })
 
   function handleChekoutOrder(data: ChekoutOrderFormData) {
     const chekoutOrderData = {
