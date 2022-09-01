@@ -6,12 +6,10 @@ import {
   Money,
 } from 'phosphor-react'
 import { useContext, useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { Link, useNavigate } from 'react-router-dom'
-import * as yup from 'yup'
-import { yupResolver } from '@hookform/resolvers/yup'
+import { Link } from 'react-router-dom'
 
 import { CoffeeCartCard } from '../../components/CoffeeCartCard'
+import { CheckoutForm } from '../../components/CheckoutForm'
 import { CartContext } from '../../contexts/CartContext'
 import { formatPrice } from '../../utils/formatPrice'
 
@@ -20,8 +18,6 @@ import {
   Title,
   Container,
   Subtitle,
-  Form,
-  Input,
   PaymentMethodContainer,
   Total,
   StyledButton,
@@ -29,12 +25,12 @@ import {
   NoCoffeeSelected,
 } from './styles'
 
+export type PaymentMethodType = 'credit' | 'debit' | 'cash'
+
 export function Chekout() {
-  type PaymentMethodType = 'credit' | 'debit' | 'cash'
   const { cartCoffees } = useContext(CartContext)
   const [currentPaymentMethod, setCurrentPaymentMethod] =
     useState<PaymentMethodType>('credit')
-  const navigate = useNavigate()
 
   function handleChangePaymentMethod(paymentMehod: PaymentMethodType) {
     if (currentPaymentMethod !== paymentMehod) {
@@ -54,40 +50,6 @@ export function Chekout() {
   const formattedTotalCoffeesPrice = formatPrice(totalCoffeesPrice)
   const formattedDeliveryValue = formatPrice(deliveryValue)
   const formattedTotalValue = formatPrice(totalValue)
-  interface ChekoutOrderFormData {
-    cep: string
-    city: string
-    complement: string
-    district: string
-    number: string
-    street: string
-    uf: string
-  }
-
-  const schema = yup
-    .object({
-      cep: yup.string().required(),
-      city: yup.string().required(),
-      complement: yup.string().required(),
-      district: yup.string().required(),
-      number: yup.string().required(),
-      street: yup.string().required(),
-      uf: yup.string().required(),
-    })
-    .required()
-
-  const { register, handleSubmit } = useForm<ChekoutOrderFormData>({
-    resolver: yupResolver(schema),
-  })
-
-  function handleChekoutOrder(data: ChekoutOrderFormData) {
-    const chekoutOrderData = {
-      ...data,
-      paymentMethod: currentPaymentMethod,
-    }
-
-    navigate('/success', { state: chekoutOrderData })
-  }
 
   return (
     <ChekoutContainer>
@@ -103,54 +65,7 @@ export function Chekout() {
             </div>
           </Subtitle>
 
-          <Form
-            id="payment-form"
-            action="/"
-            onSubmit={handleSubmit(handleChekoutOrder)}
-          >
-            <Input
-              className="cep"
-              type="text"
-              placeholder="CEP"
-              {...register('cep')}
-            />
-            <Input
-              className="street"
-              type="text"
-              placeholder="Rua"
-              {...register('street')}
-            />
-            <Input
-              className="number"
-              type="text"
-              placeholder="Número"
-              {...register('number')}
-            />
-            <Input
-              className="complement"
-              type="text"
-              placeholder="Complemento"
-              {...register('complement')}
-            />
-            <Input
-              className="district"
-              type="text"
-              placeholder="Bairro"
-              {...register('district')}
-            />
-            <Input
-              className="city"
-              type="text"
-              placeholder="Cidade"
-              {...register('city')}
-            />
-            <Input
-              className="uf"
-              type="text"
-              placeholder="UF"
-              {...register('uf')}
-            />
-          </Form>
+          <CheckoutForm paymentMethod={currentPaymentMethod} />
         </Container>
 
         <Container>

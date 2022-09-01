@@ -13,6 +13,7 @@ interface CartContextType {
   incrementCoffeeQuantity: (coffeeId: number) => void
   decrementCoffeeQuantity: (coffeeId: number) => void
   removeCoffee: (coffeeId: number) => void
+  emptyCart: () => void
 }
 
 export const CartContext = createContext({} as CartContextType)
@@ -108,6 +109,10 @@ export function CartProvider({ children }: CartProviderProps) {
     [cartCoffees],
   )
 
+  const emptyCart = useCallback(() => {
+    setCartCoffees([])
+  }, [])
+
   const cartContextValue = useMemo(
     () => ({
       cartCoffees,
@@ -116,6 +121,7 @@ export function CartProvider({ children }: CartProviderProps) {
       incrementCoffeeQuantity,
       decrementCoffeeQuantity,
       removeCoffee,
+      emptyCart,
     }),
     [
       cartCoffees,
@@ -124,6 +130,7 @@ export function CartProvider({ children }: CartProviderProps) {
       incrementCoffeeQuantity,
       decrementCoffeeQuantity,
       removeCoffee,
+      emptyCart,
     ],
   )
 
